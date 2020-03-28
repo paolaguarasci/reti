@@ -12,7 +12,7 @@ def getIPExt():
 # indirizzo lan locale
 serverAddress = getIPExt()
 # localhost (quando client e server girano sulla stessa macchina)
-serverAddress = 'localhost'
+# serverAddress = 'localhost'
 
 serverPort = 6789
 # Create a UDP socket
