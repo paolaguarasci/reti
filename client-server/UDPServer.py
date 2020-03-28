@@ -2,12 +2,24 @@
 
 from socket import *
 
+def getIPExt():
+    s = socket(AF_INET, SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    ip = s.getsockname()[0]
+    s.close()
+    return ip
+
+# indirizzo lan locale
+serverAddress = getIPExt()
+# localhost (quando client e server girano sulla stessa macchina)
+serverAddress = 'localhost'
+
 serverPort = 6789
 # Create a UDP socket
 serverSocket = socket(AF_INET, SOCK_DGRAM)
 
 # Bind the socket to the port
-server_address = ('localhost', serverPort)
+server_address = (serverAddress, serverPort)
 print('starting up on {} port {}'.format(*server_address))
 serverSocket.bind(server_address)
 
